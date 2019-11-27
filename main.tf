@@ -378,7 +378,7 @@ resource "aws_sfn_state_machine" "statemachine-take-snapshots" {
   role_arn = aws_iam_role.iam_role_state_snapshots.arn
   definition = <<EOF
 {
-  "Comment": "Triggers snapshot backup for RDS instances",
+  "Comment": "Triggers snapshot backup for Aurora clusters",
   "StartAt": "TakeSnapshots",
   "States": {
     "TakeSnapshots": {
@@ -411,7 +411,7 @@ resource "aws_sfn_state_machine" "statemachine-share-snapshots" {
   role_arn = aws_iam_role.iam_role_state_snapshots.arn
   definition = <<EOF
 {
-  "Comment": "Shares snapshots with DEST_ACCOUNT",
+  "Comment": "Shares snapshots with account ${var.destination_account}",
   "StartAt": "ShareSnapshots",
   "States": {
     "ShareSnapshots": {
@@ -444,7 +444,7 @@ resource "aws_sfn_state_machine" "statemachine-delete-snapshots" {
   role_arn = aws_iam_role.iam_role_state_snapshots.arn
   definition = <<EOF
 {
-  "Comment": "DeleteOld management for RDS snapshots",
+  "Comment": "Delete management for Aurora snapshots",
   "StartAt": "DeleteOld",
   "States": {
     "DeleteOld": {
