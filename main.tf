@@ -390,7 +390,7 @@ resource "aws_sfn_state_machine" "statemachine-take-snapshots" {
           "MaxAttempts": 20,
           "BackoffRate": 1
         }, {
-          "ErrorEquals": ["States.AL"],
+          "ErrorEquals": ["States.ALL"],
           "IntervalSeconds": 30,
           "MaxAttempts": 20,
           "BackoffRate": 1
@@ -423,7 +423,7 @@ resource "aws_sfn_state_machine" "statemachine-share-snapshots" {
           "MaxAttempts": 3,
           "BackoffRate": 1
         }, {
-          "ErrorEquals": ["States.AL"],
+          "ErrorEquals": ["States.ALL"],
           "IntervalSeconds": 30,
           "MaxAttempts": 20,
           "BackoffRate": 1
@@ -456,7 +456,7 @@ resource "aws_sfn_state_machine" "statemachine-delete-snapshots" {
           "MaxAttempts": 7,
           "BackoffRate": 1
         }, {
-          "ErrorEquals": ["States.AL"],
+          "ErrorEquals": ["States.ALL"],
           "IntervalSeconds": 30,
           "MaxAttempts": 20,
           "BackoffRate": 1
