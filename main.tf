@@ -243,7 +243,7 @@ resource "aws_iam_role_policy_attachment" "snapshots-role-policy-atachement" {
 }
 
 resource "aws_lambda_function" "lambda-take-snapshots" {
-  function_name = local.lambda-take-snapshots_name
+  function_name = local.lambda-take-snapshots-name
   role = aws_iam_role.iam_role_snapshots.arn
 
   publish = var.publish
@@ -274,12 +274,12 @@ resource "aws_lambda_function" "lambda-take-snapshots" {
 resource "aws_lambda_function" "lambda-share-snapshots" {
   count = var.sharesnapshots == "true" ? 1 : 0
 
-  function_name = local.lambda-share-snapshots_name
+  function_name = local.lambda-share-snapshots-name
   role = aws_iam_role.iam_role_snapshots.arn
 
   publish = var.publish
 
-  description = "This function shares snapshots created by the ${local.lambda-share-snapshots_name} function with DEST_ACCOUNT specified in the environment variables. "
+  description = "This function shares snapshots created by the ${local.lambda-share-snapshots-name} function with DEST_ACCOUNT specified in the environment variables. "
   memory_size = "512"
   timeout = 300
 
