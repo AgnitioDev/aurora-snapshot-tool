@@ -1,0 +1,6 @@
+._*
+*.zip
+.terraform
+.terragrunt-cache
+.idea
+
